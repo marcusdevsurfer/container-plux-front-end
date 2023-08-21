@@ -10,8 +10,12 @@ function App() {
 
 
   return (
-    <h1>Initial commit</h1>
-  );
+    <>
+    <Navbar/>
+    <ContainerInventory/>
+    <AddContainer/>
+    </>
+    );
 }
 
 export default App;
