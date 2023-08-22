@@ -6,13 +6,15 @@ import { TitleContainerInventory } from './TitleContainerInventory';
 
 export const ContainerInventory = () => {
 
+    const URI = 'http://localhost:8080/containers'
+
     const [error, setError] = useState();
     const [data, setdata] = useState([]);
 
 
     useEffect(() => {
         axios
-            .get("http://localhost:8080/containers")
+            .get(URI)
             .then(
                 (res) => {
                     setdata(res.data)
@@ -33,7 +35,7 @@ export const ContainerInventory = () => {
 
                 {data.length <= 0
                     ?
-                    <h3 className='text-center display-'>No hay registros!</h3>
+                    <h4 className='text-center display-6'>No hay registros!</h4>
                     :
                     <div className="my-4">
                         <table className="table text-center">
