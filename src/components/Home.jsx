@@ -1,12 +1,14 @@
 import React from 'react'
 import { Navbar } from './Navbar'
-import { ContainerInventory } from './ContainerInventory'
+import { Login } from './Login'
+import { Footer } from './Footer'
 
 export const Home = () => {
     return (
         <>
             <Navbar />
-            <ContainerInventory />
+            <Login />
+            <Footer/>
         </>
     )
 }
