@@ -1,25 +1,20 @@
-import { ReactDOM } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import { Navbar } from "./components/Navbar";
-import { ContainerInventory } from "./components/ContainerInventory";
-import { AddContainer } from "./components/AddContainer";
-import { Home } from "./components/Home";
-
-
-
-
+import { ContainerInventory } from "./components/ContainerInventory";import { Home } from "./components/Home";
+import { Login } from "./components/Login";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home/>}/>
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="containers-summary" element={<ContainerInventory />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
