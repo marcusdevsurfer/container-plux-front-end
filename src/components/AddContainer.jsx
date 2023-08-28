@@ -9,30 +9,34 @@ export const AddContainer = () => {
     const [entryDay, setEntryDay] = useState('')
     const [entryHour, setEntryHour] = useState('')
     const [shippingCompany, setShippingCompany] = useState('')
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('full')
     const [type, setType] = useState('')
     const [size, setSize] = useState('')
     const [operator, setOperator] = useState('')
     const [licensePlate, setLicensePlate] = useState('')
     const [carrier, setCarrier] = useState('')
 
+    function handleStatusChange(e) {
+        setStatus(e.target.value)
+    }
+
+    const container = {
+        'entryDay': entryDay,
+        'entryHour': entryHour,
+        'outDay': null,
+        'status': status,
+        'type': type,
+        'size': size,
+        'shippingCompany': shippingCompany,
+        'operator': operator,
+        'licencePlate': licensePlate,
+        'carrier': carrier
+    }
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(URI,
-            {
-                "entryDay": entryDay,
-                "entryHour": entryHour,
-                "outDay": null,
-                "status": status,
-                "type": type,
-                "size": size,
-                "shippingCompany": shippingCompany,
-                "operator": operator,
-                "licencePlate": licensePlate,
-                "carrier": carrier
-            }
-        )
+        axios.post(URI,container)
             .then(function (response) {
                 console.log(response);
             })
@@ -82,9 +86,12 @@ export const AddContainer = () => {
                 <div className="mb-3 row">
                     <label htmlFor="status" className="col-sm-4 col-form-label">Estado</label>
                     <div className='col-sm-8'>
-                        <select className="form-select col-sm-8" required onChange={e=> setStatus(e.target.value)}>
-                            <option value="full">Lleno</option>
-                            <option value="empty">Vacio</option>
+                        <select
+                            defaultValue={status}
+                            className="form-select col-sm-8"
+                            onChange={handleStatusChange}>
+                            <option value={'full'}>Lleno</option>
+                            <option value={'empty'}>Vacio</option>
                         </select>
                     </div>
                 </div>
