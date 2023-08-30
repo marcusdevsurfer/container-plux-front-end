@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { request } from '../util/axios_helper';
 import { FULL_PARAM_VALUE, EMPTY_PARAM_VALUE } from '../util/container-inventory-util';
-import { TitleContainerInventory } from './TitleContainerInventory';
 import { AddContainer } from './AddContainer';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { MyDocument } from './MyDocument';
@@ -111,9 +110,7 @@ export const ContainerInventory = () => {
 
     return (
 
-        <div className='container'>
-
-            <TitleContainerInventory />
+        <div className='container my-3'>
 
             {/* PANEL DE BOTON DE ACCIONES*/}
             <div className='row'>
