@@ -239,7 +239,7 @@ export const ContainerInventory = () => {
                     ?
                     <h4 className='text-center display-6'>No hay registros de contenedores llenos</h4>
                     :
-                    <div className="my-4">
+                    <div className="table-responsive my-4">
                         <h3 className='text-center'>Contenedores llenos</h3>
                         <table className="table text-center">
                             <thead>
@@ -305,12 +305,12 @@ export const ContainerInventory = () => {
 
 
             {/* TABLA TODOS LOS CONTENEDORES VACIOS */}
-            <div hidden={displayEmptyContainersTable}>
+            <div className='text-center' hidden={displayEmptyContainersTable}>
                 {emptyContainers.length <= 0
                     ?
-                    <h4 className='text-center display-6'>No hay registros de contenedores vacios</h4>
+                    <h4 className='display-6'>No hay registros de contenedores vacios</h4>
                     :
-                    <div className="my-4">
+                    <div className="table-responsive my-4">
                         <h3 className='text-center'>Contenedores vacios</h3>
                         <table className="table text-center">
                             <thead>
