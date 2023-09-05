@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Login = () => {
     const loginComponentStyle = {
-        'height': '85vh'
+        'height': '90vh'
     }
 
     const logoStyle = {
