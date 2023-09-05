@@ -18,7 +18,7 @@ export const ContainerInventory = () => {
     const [displayEmptyContainersTable, setDisplayEmptyContainersTable] = useState(true)
     const [displayFullContainersTable, setDisplayFullContainersTable] = useState(true)
 
-    
+
 
 
 
@@ -108,14 +108,16 @@ export const ContainerInventory = () => {
         }
     }
 
+
+
     return (
 
         <div className='container my-3'>
 
             {/* PANEL DE BOTON DE ACCIONES*/}
-            <div className='row'>
+            <div className='row text-center'>
 
-                <div className='col-sm-6'>
+                <div className='col-sm-12 col-md-12'>
                     <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Añadir contenedor
                     </button>
@@ -137,11 +139,17 @@ export const ContainerInventory = () => {
                     </div>
                 </div>
 
-                <div className=' text-end col-sm-6'>
-                    <button className='btn btn-primary' onClick={showAllContainers}>Activos</button>
+                <div className='col-md-8 col-sm-12 my-2 d-flex'>
+                    <button className='btn btn-outline-secondary p-1 m-1' onClick={showAllContainers}>Activos</button>
                     <button className='btn btn-outline-secondary p-1 m-1' onClick={showFullContainers}>Llenos</button>
                     <button className='btn btn-outline-secondary p-1 m-1' onClick={showEmptyContainers}>Vacios</button>
                 </div>
+
+                <div className='col-sm-12 d-flex col-md-4 my-2'>
+                    <input className='form-control' id='findByDate' type="date" />
+                    <button className='btn btn-primary'>Buscar</button>
+                </div>
+
 
             </div>
             {/* FIN PANEL DE BOTON DE ACCIONES*/}
@@ -155,7 +163,7 @@ export const ContainerInventory = () => {
                     ?
                     <h4 className='text-center display-6'>No hay registros!</h4>
                     :
-                    <div className="my-4">
+                    <div className="table-responsive my-4">
                         <h3 className='text-center'>Todos los contenedores</h3>
                         <table className="table text-center">
                             <thead>
