@@ -9,14 +9,28 @@ import { MyDocument } from './MyDocument';
 export const ContainerInventory = () => {
 
 
-    const [fullContainers, setFullContainers] = useState([])
-    const [emptyContainers, setEmptyContainers] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [error, setError] = useState();
     const [containersData, setContainersData] = useState([]);
     const [displayAllContainersTable, setDisplayAllContainersTable] = useState(false)
     const [displayEmptyContainersTable, setDisplayEmptyContainersTable] = useState(true)
     const [displayFullContainersTable, setDisplayFullContainersTable] = useState(true)
+
+    let fullContainers = containersData.filter(function (el) {
+        return el.status >= "full" 
+    }
+    );
+
+
+    let emptyContainers = containersData.filter(function (el) {
+        return el.status >= "empty" 
+    }
+    );
+
+
+ 
+
+    
 
 
 
@@ -40,7 +54,7 @@ export const ContainerInventory = () => {
         })
     }, [])
 
-    //METODO PARA SETEAR LISTA DE CONTENEDORES FULL
+/*     //METODO PARA SETEAR LISTA DE CONTENEDORES FULL
     useEffect(() => {
         request(
             'GET',
@@ -55,9 +69,9 @@ export const ContainerInventory = () => {
             setError(error)
             console.log(error)
         })
-    }, [isLoaded])
+    }, [isLoaded]) */
 
-    //METODO PARA SETEAR LISTA DE CONTENEDORES VACIOS
+/*     //METODO PARA SETEAR LISTA DE CONTENEDORES VACIOS
 
     useEffect(() => {
         request(
@@ -74,7 +88,7 @@ export const ContainerInventory = () => {
             setError(error)
             console.log(error)
         })
-    }, [])
+    }, []) */
 
     const findContainerById = (id) => containersData.find(container => container.id === id)
 
