@@ -9,14 +9,28 @@ import { MyDocument } from './MyDocument';
 export const ContainerInventory = () => {
 
 
-    const [fullContainers, setFullContainers] = useState([])
-    const [emptyContainers, setEmptyContainers] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [error, setError] = useState();
     const [containersData, setContainersData] = useState([]);
     const [displayAllContainersTable, setDisplayAllContainersTable] = useState(false)
     const [displayEmptyContainersTable, setDisplayEmptyContainersTable] = useState(true)
     const [displayFullContainersTable, setDisplayFullContainersTable] = useState(true)
+
+    let fullContainers = containersData.filter(function (el) {
+        return el.status >= "full" 
+    }
+    );
+
+
+    let emptyContainers = containersData.filter(function (el) {
+        return el.status >= "empty" 
+    }
+    );
+
+
+ 
+
+    
 
 
 
@@ -40,7 +54,7 @@ export const ContainerInventory = () => {
         })
     }, [])
 
-    //METODO PARA SETEAR LISTA DE CONTENEDORES FULL
+/*     //METODO PARA SETEAR LISTA DE CONTENEDORES FULL
     useEffect(() => {
         request(
             'GET',
@@ -55,9 +69,9 @@ export const ContainerInventory = () => {
             setError(error)
             console.log(error)
         })
-    }, [isLoaded])
+    }, [isLoaded]) */
 
-    //METODO PARA SETEAR LISTA DE CONTENEDORES VACIOS
+/*     //METODO PARA SETEAR LISTA DE CONTENEDORES VACIOS
 
     useEffect(() => {
         request(
@@ -74,7 +88,7 @@ export const ContainerInventory = () => {
             setError(error)
             console.log(error)
         })
-    }, [])
+    }, []) */
 
     const findContainerById = (id) => containersData.find(container => container.id === id)
 
@@ -239,7 +253,7 @@ export const ContainerInventory = () => {
                     ?
                     <h4 className='text-center display-6'>No hay registros de contenedores llenos</h4>
                     :
-                    <div className="my-4">
+                    <div className="table-responsive my-4">
                         <h3 className='text-center'>Contenedores llenos</h3>
                         <table className="table text-center">
                             <thead>
@@ -305,12 +319,12 @@ export const ContainerInventory = () => {
 
 
             {/* TABLA TODOS LOS CONTENEDORES VACIOS */}
-            <div hidden={displayEmptyContainersTable}>
+            <div className='text-center' hidden={displayEmptyContainersTable}>
                 {emptyContainers.length <= 0
                     ?
-                    <h4 className='text-center display-6'>No hay registros de contenedores vacios</h4>
+                    <h4 className='display-6'>No hay registros de contenedores vacios</h4>
                     :
-                    <div className="my-4">
+                    <div className="table-responsive my-4">
                         <h3 className='text-center'>Contenedores vacios</h3>
                         <table className="table text-center">
                             <thead>
