@@ -15,30 +15,23 @@ export const ContainerInventory = () => {
     const [displayAllContainersTable, setDisplayAllContainersTable] = useState(false)
     const [displayEmptyContainersTable, setDisplayEmptyContainersTable] = useState(true)
     const [displayFullContainersTable, setDisplayFullContainersTable] = useState(true)
+    const [date, setDate] = useState('')
 
     let fullContainers = containersData.filter(function (el) {
-        return el.status >= "full" 
+        return el.status === FULL_PARAM_VALUE  
     }
     );
 
 
     let emptyContainers = containersData.filter(function (el) {
-        return el.status >= "empty" 
+        return el.status === EMPTY_PARAM_VALUE
     }
     );
 
 
- 
-
-    
-
-
-
-
-
-
     //METODO PARA SETEAR LISTA DE CONTENEDORES
     useEffect(() => {
+        if(!isLoaded){
         request(
             'GET',
             '/containers',
@@ -52,43 +45,9 @@ export const ContainerInventory = () => {
             console.log(error)
             setIsLoaded(false)
         })
+    }
+
     }, [])
-
-/*     //METODO PARA SETEAR LISTA DE CONTENEDORES FULL
-    useEffect(() => {
-        request(
-            'GET',
-            '/containers/',
-            {},
-            {
-                'status': FULL_PARAM_VALUE
-            }
-        ).then((response) => {
-            setFullContainers(response.data)
-        }).catch(error => {
-            setError(error)
-            console.log(error)
-        })
-    }, [isLoaded]) */
-
-/*     //METODO PARA SETEAR LISTA DE CONTENEDORES VACIOS
-
-    useEffect(() => {
-        request(
-            'GET',
-            '/containers/',
-            {},
-            {
-                'status': EMPTY_PARAM_VALUE
-            }
-        ).then((response) => {
-            setEmptyContainers(response.data)
-            console.log(response.request)
-        }).catch(error => {
-            setError(error)
-            console.log(error)
-        })
-    }, []) */
 
     const findContainerById = (id) => containersData.find(container => container.id === id)
 
