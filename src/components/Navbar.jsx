@@ -4,7 +4,7 @@ export const Navbar = () => {
 
   return (
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-2">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Container Plux</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +13,7 @@ export const Navbar = () => {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="/containers-summary">Inventario</a>
+            <a class="nav-link" href="/dashboard">Dashboard</a>
           </div>
         </div>
       </div>
